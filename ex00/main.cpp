@@ -3,12 +3,14 @@
 int main ( void )
 {
 	ClapTrap batMan("Batman");
-	ClapTrap superMan("SuperMan");
-	batMan.attack("SuperMan");
-	superMan.takeDamage(5);
-	superMan.beRepaired(3);
+	ClapTrap superMan("Superman");
+	superMan.attack(batMan.getName());
+	batMan.takeDamage(batMan.getAttackDmg());
 	superMan.attack("Batman");
-	batMan.takeDamage(2);
-	superMan.takeDamage(10);
-	superMan.attack("bich");
+	batMan.takeDamage(batMan.getAttackDmg());
+	batMan.beRepaired(9);
+	batMan.attack(superMan.getName());
+	superMan.takeDamage(superMan.getAttackDmg());
+	superMan.beRepaired(3);
+	return 0;
 }

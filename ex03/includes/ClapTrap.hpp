@@ -18,7 +18,7 @@ public:
 	int getAttackDmg ( void );
 	void setAttackDmg ( int dmg );
 	~ClapTrap ();
-private:
+protected:
 	std::string name;
 	int			health_p;
 	int			energy_p;

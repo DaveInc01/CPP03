@@ -1,12 +1,12 @@
 #ifndef DIAMONDTRAP_HPP
-#define DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
 
-#include "ClapTrap.hpp"
+#include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
-class DiamondTrap :public ClapTrap, public ScavTrap {
+class DiamondTrap : public ScavTrap, public FragTrap {
 public:
-	DiamondTrap ( void );
+	DiamondTrap ();
 	DiamondTrap ( std::string n );
 	DiamondTrap (const DiamondTrap &other);
 	void attack(std::string& target);
@@ -14,7 +14,10 @@ public:
 	void beRepaired(unsigned int amount);
 	void guardGate();
 	void highFivesGuys(void);
+	void whoAmI( void );
 	~DiamondTrap ();
 private:
 	std::string name;
-}
+};
+
+#endif

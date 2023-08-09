@@ -10,10 +10,6 @@ public:
 	DiamondTrap ( std::string n );
 	DiamondTrap (const DiamondTrap &other);
 	void attack(std::string& target);
-	void takeDamage(unsigned int amount);
-	void beRepaired(unsigned int amount);
-	void guardGate();
-	void highFivesGuys(void);
 	void whoAmI( void );
 	~DiamondTrap ();
 private:

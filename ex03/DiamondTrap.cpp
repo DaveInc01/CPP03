@@ -2,7 +2,8 @@
 
 DiamondTrap::DiamondTrap()
 {
-	this->name = "bot";
+	ClapTrap::name = ClapTrap::name + "_clap_name";
+	this->name = ClapTrap::name;
 	this->health_p = FragTrap::health_p;
 	this->energy_p = ScavTrap::energy_p;
 	this->attack_dmg = FragTrap::attack_dmg;
@@ -11,8 +12,8 @@ DiamondTrap::DiamondTrap()
 
 DiamondTrap::DiamondTrap(std::string n)
 {
-	ClapTrap::name = n + "_clap_name";
 	this->name = n;
+	ClapTrap::name = n + "_clap_name";
 	this->health_p = FragTrap::health_p;
 	this->energy_p = ScavTrap::energy_p;
 	this->attack_dmg = FragTrap::attack_dmg;
@@ -21,71 +22,21 @@ DiamondTrap::DiamondTrap(std::string n)
 
 DiamondTrap::DiamondTrap(const DiamondTrap &other)
 {
-	*this = other;
+	this->health_p = other.health_p;
+	this->energy_p = other.energy_p;
+	this->attack_dmg = other.attack_dmg;
+	this->name = other.name;
 	std::cout << "DiamondTrap Copy Constructor called" << std::endl;
 }
 
 void DiamondTrap::attack(std::string& target)
 {
-
-	ScavTrap::attack(target);
-	// if (this->health_p > 0 && this->energy_p > 0)
-	// {
-	// 	std::cout << "\x1b[31mDiamondTrap " << this->name << " attacks " << target << ",causing " << this->attack_dmg << " points of damage! \x1b[0m" << std::endl;
-	// 	this->energy_p -= 1;
-	// }
-	// else if (this->health_p <= 0)
-	// {
-	// 	std::cout << "\x1b[32;41mDiamondTrap " << this->name << " is alredy died \x1b[0m" << std::endl;
-	// }
-	// else{
-	// 	std::cout << "\x1b[32;41mDiamondTrap " << this->name << " not have enough energy points \x1b[0m" << std::endl;
-	// }
-}
-
-void DiamondTrap::takeDamage(unsigned int amount)
-{
-	if (this->health_p > 0)
-	{
-		std::cout << "\x1b[31mDiamondTrap " << this->name << " takes " << amount << " points of damage 🗡 \x1b[0m " << std::endl;
-		this->health_p -= amount;
-	}
-	else
-	{
-		std::cout << "\x1b[32;41mDiamondTrap " << this->name << " is alredy died \x1b[0m" << std::endl;
-	}
-}
-
-void DiamondTrap::beRepaired(unsigned int amount){
-	if (this->energy_p > 0 && this->health_p > 0)
-	{
-		std::cout << "\x1b[32mDiamondTrap " << this->name << " repairs " << amount << " points of HP    ✚\x1b[0m" << std::endl;
-		this->health_p += amount;
-		energy_p -= 1;
-	}
-	else if (this->health_p <= 0)
-	{
-		std::cout << "\x1b[32;41mDiamondTrap " << this->name << " is alredy died \x1b[0m" << std::endl;
-	}
-	else{
-		std::cout << "\x1b[32;41mDiamondTrap " << this->name << " not have enough energy points \x1b[0m" << std::endl;
-	}
-}
-
-void DiamondTrap::guardGate()
-{
-	std::cout << "\x1b[33;46mDiamondTrap " << this->name << "  is now in Gate keeper mode.\x1b[0m" << std::endl;
+	this->ScavTrap::attack(target);
 }
 
 void DiamondTrap::whoAmI( void )
 {
 	std::cout << "DiamondTrap's name is " << this->name << " and my hommie ClapTrap's name is " << ClapTrap::name << std::endl;
-}
-
-
-void DiamondTrap::highFivesGuys(void)
-{
-	std::cout << "DiamondTrap " << this->name << ": Guys, get me a high fives 🖐" << std::endl;
 }
 
 DiamondTrap::~DiamondTrap(){
